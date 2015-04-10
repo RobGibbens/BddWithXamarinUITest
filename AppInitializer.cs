@@ -19,7 +19,7 @@ namespace BddWithXamarinUITest
 				// TODO: Update this path to point to your Android app and uncomment the
 				// code if the app is not included in the solution.
 				//.ApkFile ("../../../Droid/bin/Debug/xamarinforms.apk")
-					.ApkFile ("/Users/rob/dev/BddWithXamarinUITest/binaries/com.xamarin.samples.taskyandroid.apk")
+					.ApkFile ("../../binaries/com.xamarin.samples.taskyandroid.apk")
 					.EnableLocalScreenshots ()
 					.StartApp ();
 			} else if (platform == Platform.iOS) {
@@ -37,7 +37,7 @@ namespace BddWithXamarinUITest
 					// TODO: Update this path to point to your iOS app and uncomment the
 					// code if the app is not included in the solution.
 					//.AppBundle ("../../../iOS/bin/iPhoneSimulator/Debug/XamarinForms.iOS.app")
-					.AppBundle ("/Users/rob/dev/BddWithXamarinUITest/binaries/TaskyiOS.app")
+					.AppBundle ("../../binaries/TaskyiOS.app")
 					.EnableLocalScreenshots ()
 					.DeviceIdentifier(iOSSimulator)
 					.StartApp ();

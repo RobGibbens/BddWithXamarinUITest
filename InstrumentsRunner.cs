@@ -1,11 +1,7 @@
-using Xamarin.UITest;
-using TechTalk.SpecFlow;
 using System.Diagnostics;
-using Xamarin.UITest.Configuration;
 using System.Collections.Generic;
 using System;
 using System.Text;
-using System.Linq;
 
 namespace BddWithXamarinUITest
 {
@@ -48,8 +44,8 @@ namespace BddWithXamarinUITest
 				}
 			}
 
-			var names = simulators.Select(x => x.Name).Aggregate((current, next) => current + System.Environment.NewLine + next);
-			Console.WriteLine (names);
+			//var names = simulators.Select(x => x.Name).Aggregate((current, next) => current + System.Environment.NewLine + next);
+			//Console.WriteLine (names);
 
 			return simulators.ToArray();
 		}

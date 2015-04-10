@@ -1,10 +1,4 @@
-using Xamarin.UITest;
-using TechTalk.SpecFlow;
-using System.Diagnostics;
-using Xamarin.UITest.Configuration;
-using System.Collections.Generic;
 using System;
-using System.Linq;
 
 namespace BddWithXamarinUITest
 {
