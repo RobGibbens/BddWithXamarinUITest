@@ -14,7 +14,7 @@ namespace BddWithXamarinUITest
 			app.Tap(addTaskScreen.deleteButton);
 		}
 
-		[Then(@"the task named ""(.*)"" no longer exists"), Scope(Tag = "removeTask")]
+		[Then(@"the task named ""(.*)"" no longer exists"), Scope(Tag = Scopes.RemoveTask)]
 		public void ThenTheTaskNoLongerExists(string taskName)
 		{
 			app.Query(c => c.Marked(taskName)).Count().ShouldEqual(0);

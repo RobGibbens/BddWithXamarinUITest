@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Xamarin.UITest;
+using TechTalk.SpecFlow;
 
 namespace BddWithXamarinUITest
 {
@@ -10,7 +11,7 @@ namespace BddWithXamarinUITest
 	[TestFixture (Platform.iOS, iPadAir.OS_8_2)]
 	public class FeatureBase
 	{
-		public static IApp app;
+		protected static IApp app;
 		protected Platform platform;
 		protected string iOSSimulator;
 
@@ -24,7 +25,7 @@ namespace BddWithXamarinUITest
 		public void BeforeEachTest ()
 		{
 			app = AppInitializer.StartApp (platform, iOSSimulator);
-
+			FeatureContext.Current.Add ("App", app);
 			AppInitializer.InitializeScreens (platform);
 		}
 	}

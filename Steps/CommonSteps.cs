@@ -14,7 +14,7 @@ namespace BddWithXamarinUITest
 
 		public CommonSteps ()
 		{
-			app = FeatureBase.app;
+			app = FeatureContext.Current.Get<IApp>("App");
 			homeScreen = FeatureContext.Current.Get<IHomeScreen> (ScreenNames.Home);
 			addTaskScreen = FeatureContext.Current.Get<IAddTaskScreen> (ScreenNames.AddTask);
 		}
