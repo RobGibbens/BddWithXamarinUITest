@@ -48,8 +48,8 @@ namespace BddWithXamarinUITest
 				}
 			}
 
-			//var names = simulators.Select(x => x.Name).Aggregate((current, next) => current + System.Environment.NewLine + next);
-			//Console.WriteLine (names);
+			var names = simulators.Select(x => x.Name).Aggregate((current, next) => current + System.Environment.NewLine + next);
+			Console.WriteLine (names);
 
 			return simulators.ToArray();
 		}

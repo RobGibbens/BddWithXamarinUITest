@@ -81,7 +81,6 @@
     <Compile Include="TestHelpers.cs" />
     <Compile Include="InstrumentsRunner.cs" />
     <Compile Include="Simulator.cs" />
-    <Compile Include="Screens\iPhone6.cs" />
     <Compile Include="Features\FeatureBase.cs" />
     <Compile Include="remove_a_task.feature.cs">
       <DependentUpon>remove_a_task.feature</DependentUpon>
@@ -90,6 +89,7 @@
     <Compile Include="Steps\CommonSteps.cs" />
     <Compile Include="Steps\RemoveATaskSteps.cs" />
     <Compile Include="Steps\StepsBase.cs" />
+    <Compile Include="SimulatorNames.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
