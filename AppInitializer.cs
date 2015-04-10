@@ -14,6 +14,8 @@ namespace BddWithXamarinUITest
 			// then open the Unit Tests window, right click Test Apps, select Add App Project
 			// and select the app projects that should be tested.
 			if (platform == Platform.Android) {
+				ResetEmulator ();
+
 				return ConfigureApp
 					.Android
 				// TODO: Update this path to point to your Android app and uncomment the
@@ -44,6 +46,14 @@ namespace BddWithXamarinUITest
 			}
 
 			throw new ArgumentException ("Unsupported platform");
+		}
+
+		static void ResetEmulator()
+		{
+			//TODO : Generalize this
+			//TODO : Make this work on Windows?
+			var eraseProcess = Process.Start ("/Users/rob/Library/Developer/Xamarin/android-sdk-macosx/platform-tools/adb", "shell pm uninstall com.xamarin.samples.taskydroid");
+			eraseProcess.WaitForExit ();
 		}
 
 		static void ResetSimulator(string deviceId)

@@ -16,9 +16,8 @@ namespace BddWithXamarinUITest
 		[When(@"I edit the task name to be ""(.*)"""), Scope(Tag = Scopes.EditTask)]
 		public void WhenIEditTheTaskNameToBe(string taskName)
 		{
-			app.Repl ();
-			app.ClearText(addTaskScreen.nameEntry);
-			app.ClearText(addTaskScreen.nameEntry);
+			app.ClearText(c => c.TextField());
+			app.ClearText(c => c.TextField());
 			app.EnterText(addTaskScreen.nameEntry, taskName);
 		}
 	}
