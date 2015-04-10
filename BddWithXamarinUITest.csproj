@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C609F28E-CB74-44D0-B9A9-DD9F31EC2732}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BddWithXamarinUITest</RootNamespace>
+    <AssemblyName>BddWithXamarinUITest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.UITest">
+      <HintPath>packages\Xamarin.UITest.0.7.2\lib\Xamarin.UITest.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Should">
+      <HintPath>packages\Should.1.1.20\lib\Should.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="add_a_task.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>add_a_task.feature.cs</LastGenOutput>
+    </None>
+    <None Include="edit_a_task.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>edit_a_task.feature.cs</LastGenOutput>
+    </None>
+    <None Include="remove_a_task.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>remove_a_task.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppInitializer.cs" />
+    <Compile Include="add_a_task.feature.cs">
+      <DependentUpon>add_a_task.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\AddATaskSteps.cs" />
+    <Compile Include="Features\AddingATaskFeature.cs" />
+    <Compile Include="Screens\ScreenNames.cs" />
+    <Compile Include="Screens\Scopes.cs" />
+    <Compile Include="Screens\AddTask\IAddTaskScreen.cs" />
+    <Compile Include="Screens\Home\IHomeScreen.cs" />
+    <Compile Include="Screens\AddTask\iOSAddTaskScreen.cs" />
+    <Compile Include="Screens\Home\iOSHomeScreen.cs" />
+    <Compile Include="Screens\AddTask\AndroidAddTaskScreen.cs" />
+    <Compile Include="Screens\Home\AndroidHomeScreen.cs" />
+    <Compile Include="edit_a_task.feature.cs">
+      <DependentUpon>edit_a_task.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\EditATaskSteps.cs" />
+    <Compile Include="Features\EditATaskFeature.cs" />
+    <Compile Include="TestHelpers.cs" />
+    <Compile Include="InstrumentsRunner.cs" />
+    <Compile Include="Simulator.cs" />
+    <Compile Include="Screens\iPhone6.cs" />
+    <Compile Include="Features\FeatureBase.cs" />
+    <Compile Include="remove_a_task.feature.cs">
+      <DependentUpon>remove_a_task.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\RemoveATaskFeature.cs" />
+    <Compile Include="Steps\CommonSteps.cs" />
+    <Compile Include="Steps\RemoveATaskSteps.cs" />
+    <Compile Include="Steps\StepsBase.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Steps\" />
+    <Folder Include="Features\" />
+    <Folder Include="Screens\" />
+    <Folder Include="Screens\Home\" />
+    <Folder Include="Screens\AddTask\" />
+  </ItemGroup>
+</Project>
