@@ -29,7 +29,7 @@ namespace BddWithXamarinUITest
 
 				if (string.IsNullOrEmpty(deviceId))
 				{
-					throw new ArgumentException ($"No simulator found with device name [{iOSSimulator}]", iOSSimulator);
+					throw new ArgumentException ("No simulator found with device name [{iOSSimulator}]", iOSSimulator);
 				}
 
 				ResetSimulator(deviceId);
