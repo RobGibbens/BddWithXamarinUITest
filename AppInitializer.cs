@@ -14,6 +14,7 @@ namespace BddWithXamarinUITest
 			// then open the Unit Tests window, right click Test Apps, select Add App Project
 			// and select the app projects that should be tested.
 			if (platform == Platform.Android) {
+
 				ResetEmulator ();
 
 				return ConfigureApp
@@ -21,21 +22,16 @@ namespace BddWithXamarinUITest
 				// TODO: Update this path to point to your Android app and uncomment the
 				// code if the app is not included in the solution.
 				//.ApkFile ("../../../Droid/bin/Debug/xamarinforms.apk")
-					.ApkFile ("../../binaries/com.xamarin.samples.taskyandroid.apk")
+					.ApkFile ("../../binaries/com.xamarin.samples.taskydroidnew.exampleapp.apk")
 					.EnableLocalScreenshots ()
 					.StartApp ();
+				
 			} else if (platform == Platform.iOS) {
-				var deviceId = TestHelpers.GetDeviceID(iOSSimulator);
-
-				if (string.IsNullOrEmpty(deviceId))
-				{
-					throw new ArgumentException ($"No simulator found with device name [{iOSSimulator}]", iOSSimulator);
-				}
-
-				ResetSimulator(deviceId);
+				
+				ResetSimulator(iOSSimulator);
 
 				return ConfigureApp
-				.iOS
+					.iOS
 					// TODO: Update this path to point to your iOS app and uncomment the
 					// code if the app is not included in the solution.
 					//.AppBundle ("../../../iOS/bin/iPhoneSimulator/Debug/XamarinForms.iOS.app")
@@ -52,16 +48,28 @@ namespace BddWithXamarinUITest
 		{
 			//TODO : Generalize this
 			//TODO : Make this work on Windows?
-			var eraseProcess = Process.Start ("/Users/rob/Library/Developer/Xamarin/android-sdk-macosx/platform-tools/adb", "shell pm uninstall com.xamarin.samples.taskydroid");
-			eraseProcess.WaitForExit ();
+
+			if (TestEnvironment.Platform.Equals(TestPlatform.Local))
+			{
+				var eraseProcess = Process.Start ("/Users/rob/Library/Developer/Xamarin/android-sdk-macosx/platform-tools/adb", "shell pm uninstall com.xamarin.samples.taskydroid");
+				eraseProcess.WaitForExit ();
+			}
 		}
 
-		static void ResetSimulator(string deviceId)
+		static void ResetSimulator(string iOSSimulator)
 		{
-			var shutdownProcess = Process.Start("xcrun", string.Format("simctl shutdown {0}", deviceId));
-			shutdownProcess.WaitForExit();
-			var eraseProcess = Process.Start("xcrun", string.Format("simctl erase {0}", deviceId));
-			eraseProcess.WaitForExit();
+			if (TestEnvironment.Platform.Equals (TestPlatform.Local)) {
+				var deviceId = TestHelpers.GetDeviceID (iOSSimulator);
+
+				if (string.IsNullOrEmpty (deviceId)) {
+					throw new ArgumentException ($"No simulator found with device name [{iOSSimulator}]", iOSSimulator);
+				}
+
+				var shutdownProcess = Process.Start ("xcrun", string.Format ("simctl shutdown {0}", deviceId));
+				shutdownProcess.WaitForExit ();
+				var eraseProcess = Process.Start ("xcrun", string.Format ("simctl erase {0}", deviceId));
+				eraseProcess.WaitForExit ();
+			}
 		}
 
 		public static void InitializeScreens(Platform platform)

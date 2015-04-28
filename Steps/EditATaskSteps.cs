@@ -10,6 +10,7 @@ namespace BddWithXamarinUITest
 		[Then(@"the task named ""(.*)"" no longer exists"), Scope(Tag = Scopes.EditTask)]
 		public void ThenTheTaskNamedNoLongerExists(string taskName)
 		{
+			app.Screenshot("Then the task named '" + taskName + "' no longer exists");
 			app.Query(c => c.Marked(taskName)).Count().ShouldEqual(0);
 		}
 
@@ -19,6 +20,7 @@ namespace BddWithXamarinUITest
 			app.ClearText(c => c.TextField());
 			app.ClearText(c => c.TextField());
 			app.EnterText(addTaskScreen.nameEntry, taskName);
+			app.Screenshot("When I edit the task name to be '" + taskName + "'");
 		}
 	}
 	
