@@ -1,6 +1,7 @@
 ﻿Feature: Adding a task
   I want to be able to quickly add a task
 
+@addTask
   Scenario: Add a task
     Given I am on the Home screen
     When I add a new task called "Get Milk"

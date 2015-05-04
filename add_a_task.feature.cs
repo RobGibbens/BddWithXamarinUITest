@@ -66,18 +66,21 @@ namespace BddWithXamarinUITest
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add a task")]
+        [NUnit.Framework.CategoryAttribute("addTask")]
         public virtual void AddATask()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a task", ((string[])(null)));
-#line 4
-  this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a task", new string[]
+                {
+                        "addTask"});
 #line 5
-    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  this.ScenarioSetup(scenarioInfo);
 #line 6
-    testRunner.When("I add a new task called \"Get Milk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-    testRunner.And("I save the task", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I add a new task called \"Get Milk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
+    testRunner.And("I save the task", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 9
     testRunner.Then("I should see the \"Get Milk\" task in the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
