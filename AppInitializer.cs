@@ -8,33 +8,31 @@ namespace BddWithXamarinUITest
 {
 	public static class AppInitializer
 	{
-		public static IApp StartApp (Platform platform, string iOSSimulator)
+		public static IApp StartApp (Platform platform, string iOSSimulator, bool resetDevice)
 		{
 			// TODO: If the iOS or Android app being tested is included in the solution 
 			// then open the Unit Tests window, right click Test Apps, select Add App Project
 			// and select the app projects that should be tested.
 			if (platform == Platform.Android) {
 
-				ResetEmulator ();
+				if (resetDevice) {
+					ResetEmulator ();
+				}
 
 				return ConfigureApp
 					.Android
-				// TODO: Update this path to point to your Android app and uncomment the
-				// code if the app is not included in the solution.
-				//.ApkFile ("../../../Droid/bin/Debug/xamarinforms.apk")
 					.ApkFile ("../../binaries/com.xamarin.samples.taskydroidnew.exampleapp.apk")
 					.EnableLocalScreenshots ()
 					.StartApp ();
 				
 			} else if (platform == Platform.iOS) {
-				
-				ResetSimulator(iOSSimulator);
+
+				if (resetDevice) {
+					ResetSimulator (iOSSimulator);
+				}
 
 				return ConfigureApp
 					.iOS
-					// TODO: Update this path to point to your iOS app and uncomment the
-					// code if the app is not included in the solution.
-					//.AppBundle ("../../../iOS/bin/iPhoneSimulator/Debug/XamarinForms.iOS.app")
 					.AppBundle ("../../binaries/TaskyiOS.app")
 					.EnableLocalScreenshots ()
 					.DeviceIdentifier(iOSSimulator)

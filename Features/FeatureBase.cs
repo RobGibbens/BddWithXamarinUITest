@@ -21,17 +21,19 @@ namespace BddWithXamarinUITest
 		protected static IApp app;
 		protected Platform platform;
 		protected string iOSSimulator;
+		protected bool resetDevice;
 
-		public FeatureBase (Platform platform, string iOSSimulator)
+		public FeatureBase (Platform platform, string iOSSimulator, bool resetDevice = true)
 		{
 			this.iOSSimulator = iOSSimulator;
 			this.platform = platform;
+			this.resetDevice = resetDevice;
 		}
 
 		[SetUp]
 		public void BeforeEachTest ()
 		{
-			app = AppInitializer.StartApp (platform, iOSSimulator);
+			app = AppInitializer.StartApp (platform, iOSSimulator, resetDevice);
 			FeatureContext.Current.Add ("App", app);
 			AppInitializer.InitializeScreens (platform);
 		}
